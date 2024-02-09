@@ -18,11 +18,11 @@ public class ReservationService {
         int actualFullSlotOfWorkstation = reservationDAO.fullSlot(reservation.getWorkstation(), reservation.getDate());
         List<Reservation> reservations = reservationDAO.filterBySameUserAndDate(reservation.getUser(), reservation.getDate());
 
-        if (reservations.isEmpty() && maxSlotOfWorkstation < actualFullSlotOfWorkstation) {
+        if (reservations.isEmpty() && maxSlotOfWorkstation > actualFullSlotOfWorkstation) {
             reservationDAO.save(reservation);
             log.info("Prenotazione salvata correttamente!");
         } else {
-            throw new RuntimeException("L'utente ha già una prenotazione per questa data!");
+            throw new RuntimeException("L'utente ha già una prenotazione per questa data oppure la postazione è piena!");
         }
     }
 }

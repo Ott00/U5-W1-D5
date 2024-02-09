@@ -21,6 +21,7 @@ public class Workstation {
     @Setter(AccessLevel.NONE)
     private Long id;
     private String description;
+    @Enumerated(EnumType.STRING)
     private WorkstationType workstationType;
     @Column(name = "max_user")
     private int maxUser;
