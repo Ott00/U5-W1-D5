@@ -67,5 +67,9 @@ public class RunnerPrenotazioni implements CommandLineRunner {
             //reservationService.save(reservationTest2); ***
         }
 
+        System.out.println("TEST RICERCA POSTAZIONE");
+        workstationService
+                .findByTypeAndCity(WorkstationType.SALA_RIUNIONI, "Giordano Sardo")
+                .forEach(System.out::println);
     }
 }

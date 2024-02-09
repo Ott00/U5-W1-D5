@@ -2,10 +2,7 @@ package com.karimotman.U5W1D5.entities;
 
 import com.karimotman.U5W1D5.enums.WorkstationType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Workstation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +27,7 @@ public class Workstation {
     @JoinColumn(name = "building_id")
     private Building building;
     @OneToMany(mappedBy = "workstation")
+    @ToString.Exclude
     private List<Reservation> workstationList;
 
     public Workstation(String description, WorkstationType workstationType, int maxUser, Building building) {

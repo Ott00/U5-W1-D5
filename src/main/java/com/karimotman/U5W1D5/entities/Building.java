@@ -1,10 +1,7 @@
 package com.karimotman.U5W1D5.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Building {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +21,7 @@ public class Building {
     private String address;
     private String city;
     @OneToMany(mappedBy = "building")
+    @ToString.Exclude
     private List<Workstation> workstationList;
 
     public Building(String name, String address, String city) {
